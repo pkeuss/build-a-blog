@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action = "/newpost" method = "post">
+    <label>
+        <div>Title</div>
+        <input type="text" name = "title" value = {{title if title else ""}}>
+    </label>
+    <br>
+    <label>
+        <div>Blog Post</div>
+        <textarea name="content">{{content if content else ""}}</textarea>
+    </label>
+    <br>
+    <input type="submit" value="Post it!"/>
+</form>
+
+<p class="error">{{error if error else "" }}</p>
+{% endblock %}
