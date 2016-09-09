@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h2>Blog Entries:</h2>
+<!-- I tried wiriting {% if page != 0 %} <h5> tag and all its contents {% endif %}, to no avail -->
+
+<!-- <h5 {{ 'class = "unseen"' if page == 0 else ""}}><a href="/?page={{prev_page}}">Previous</a></h5> -->
+<h5  class = "{{prev_class}}"><a href="/blog?page={{prev_page}}">Previous</a></h5>
+
+<h5 class = "{{next_class}}"><a href="/blog?page={{next_page}}">Next</a></h5>
 
 <ul>
 {% for entry in blogs %}
     <li>
         <h3><a href="/blog/{{entry.key().id()}}">{{ entry.title }}</a></h3>
         <div>
-            Post: {{ entry.blogEntry }}
+            {{ entry.blogEntry }}
         </div>
     </li>
 {% endfor %}
